@@ -55,15 +55,10 @@ class ViewController: UIViewController {
     func configureGestures()
     {
         // rect に Swipe Left Gesture追加
-        var swipeGestureRecognizerLeft = UISwipeGestureRecognizer(target: self, action: Selector("callSwipeLeftAnimation"))
-        swipeGestureRecognizerLeft.direction = .Left
-        rect.addGestureRecognizer(swipeGestureRecognizerLeft)
         
         
         // rect に Swipe Right Gesture追加
-        var swipeGestureRecognizerRight = UISwipeGestureRecognizer(target: self, action: Selector("callSwipeRightAnimation"))
-        swipeGestureRecognizerRight.direction = .Right
-        rect.addGestureRecognizer(swipeGestureRecognizerRight)
+        
     }
     
     //----------- アニメーション ------------//
@@ -71,17 +66,11 @@ class ViewController: UIViewController {
     func callSwipeLeftAnimation()
     {
         // 左の枠へ移動するアニメーション
-        UIView.animateWithDuration(1.0, animations: { () -> Void in
-            self.rect.center = self.leftFrame.center
-        })
     }
     
     func callSwipeRightAnimation()
     {
         // 右の枠へ移動するアニメーション
-        UIView.animateWithDuration(1.0, animations: { () -> Void in
-            self.rect.center = self.rightFrame.center
-        })
     }
 }
 
