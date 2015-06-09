@@ -22,6 +22,11 @@ class ViewController: UIViewController {
         configureGestures()
 //        callAnimation()
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
 
     func configureViews()
     {
@@ -44,19 +49,28 @@ class ViewController: UIViewController {
         self.view.addSubview(rect)
     }
     
+    
+    //----------- ジェスチャーの追加 ------------//
+    
     func configureGestures()
     {
+        // rect に Swipe Left Gesture追加
         var swipeGestureRecognizerLeft = UISwipeGestureRecognizer(target: self, action: Selector("callSwipeLeftAnimation"))
         swipeGestureRecognizerLeft.direction = .Left
         rect.addGestureRecognizer(swipeGestureRecognizerLeft)
         
+        
+        // rect に Swipe Right Gesture追加
         var swipeGestureRecognizerRight = UISwipeGestureRecognizer(target: self, action: Selector("callSwipeRightAnimation"))
         swipeGestureRecognizerRight.direction = .Right
         rect.addGestureRecognizer(swipeGestureRecognizerRight)
     }
     
+    //----------- アニメーション ------------//
+    
     func callSwipeLeftAnimation()
     {
+        // 左の枠へ移動するアニメーション
         UIView.animateWithDuration(1.0, animations: { () -> Void in
             self.rect.center = self.leftFrame.center
         })
@@ -64,16 +78,10 @@ class ViewController: UIViewController {
     
     func callSwipeRightAnimation()
     {
+        // 右の枠へ移動するアニメーション
         UIView.animateWithDuration(1.0, animations: { () -> Void in
             self.rect.center = self.rightFrame.center
-            })
+        })
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
 }
 
